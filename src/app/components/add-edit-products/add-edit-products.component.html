@@ -1,0 +1,29 @@
+<div class="card border-secondary mb-3 mt-4 mx-auto" style="max-width: 30rem;">
+  <div class="card-header text-center">{{ operacion }} producto</div>
+  <form [formGroup]="form" (ngSubmit)="addProduct()">
+    <div class="card-body mb-3 d-flex flex-column gap-4">
+
+      <input formControlName="name" type="text" class="form-control mt-3" placeholder="Nombre">
+      @if(form.get('name')?.hasError('required') && form.get('name')?.touched) {
+      <span>El campo Nombre es requerido</span>
+      }
+
+      <input formControlName="description" type="text" class="form-control" placeholder="Descripción">
+      @if(form.get('description')?.hasError('required') && form.get('description')?.touched) {
+      <span>El campo Descripción es requerido</span>
+      }
+      <input formControlName="price" type="number" class="form-control" placeholder="Precio">
+      @if(form.get('price')?.hasError('required') && form.get('price')?.touched) {
+      <span>El campo Precio es requerido</span>
+      }
+      <input formControlName="stock" type="number" class="form-control" placeholder="Stock">
+      @if(form.get('stock')?.hasError('required') && form.get('stock')?.touched) {
+      <span>El campo Stock es requerido</span>
+      }
+
+      <button type="button" class="btn btn-secondary mt-3 text-light" routerLink="/">Volver</button>
+      <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+
+    </div>
+  </form>
+</div>

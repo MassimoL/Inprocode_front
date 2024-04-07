@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="title d-flex justify-content-between mt-4 mb-4">
+    <h2>Listado de productos</h2>
+    <button type="button" class="btn btn-success text-light" routerLink="/add">Agregar producto</button>
+  </div>
+
+  <div class="container d-flex flex-wrap justify-content-around">
+    @if(listProducts.length > 0){
+
+    @for (item of listProducts;track item.id) {
+    <div class="card border-secondary mb-3" style="width: 18rem;">
+      <div class="card-header"> <strong>Id.</strong>{{item.id}}</div>
+      <div class="card-body">
+        <h5 class="card-title"><strong>Nombre: </strong>{{item.name}}</h5>
+        <p class="card-text mt-4"><strong>Descripción: </strong>{{item.description}}</p>
+        <p class="card-text"><strong>Precio: </strong>{{item.price}}</p>
+        <p class="card-text"><strong>Stock: </strong>{{item.stock}}</p>
+      </div>
+      <button type="button" class="btn btn-success ms-3 me-3 text-light" routerLink="/edit/{{ item.id }}">Editar</button>
+      <button (click)="deleteProduct(item.id!)" type="button" class="btn btn-secondary m-3">Eliminar</button>
+    </div>
+    }
+    }
+  </div>
+  @if(listProducts.length == 0){
+  <div class="alert alert-warning" role="alert">
+    No hay productos en la base de datos
+  </div>
+  }
+</div>

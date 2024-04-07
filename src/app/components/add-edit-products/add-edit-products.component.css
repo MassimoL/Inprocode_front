@@ -1,0 +1,5 @@
+
+  .form-control + span {
+    margin-top: -20px;
+    color: red;
+  }
